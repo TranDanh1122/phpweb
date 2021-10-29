@@ -37,7 +37,7 @@
 .gallery{
     width: 100%;
 }
-.main-image{
+.gallery.main-image{
     display: -webkit-box;
     display:-moz-box;
     display:-ms-flexbox;
@@ -51,20 +51,20 @@
 
 
 }
-.main-image img{
+.gallery.main-image img{
     width: auto;
     height: auto;
     margin: auto;
     max-height: 400px;
 
 }
-.sub-image ul{
+.gallery.sub-image ul{
     padding-left: 0;
     margin-bottom: 0;
     overflow: hidden;
     margin-top: 3px;
 }
-.sub-image ul li{
+.gallery.sub-image ul li{
     width: calc(100%/4);
     float: left;
     display: -webkit-box;
@@ -78,7 +78,7 @@
     align-items:center;
     height: 87px;
 }
-.sub-image ul li img{
+.gallery.sub-image ul li img{
     width: auto;
     margin: auto;
     height: auto;
