@@ -24,3 +24,4 @@ Route::get('/allpost','Mua_Ban_Controller@allmathang');
 Route::post('/uploadanh', 'Mua_Ban_Controller@upanh')->name('dangnhap');
 Route::post('/luubai', 'Mua_Ban_Controller@store_mathang')->name('luubai');
 Route::post('/editbai/{id}', 'Mua_Ban_Controller@edit_mathang')->name('suabai');
+Route::post('/luuanh', 'Mua_Ban_Controller@luuanh');

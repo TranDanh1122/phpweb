@@ -9,7 +9,7 @@ class mathang_anh extends Model
 {
     use HasFactory;
     protected $table = 'mathang_anh';
-    protected $fillable = ['name','mathang_id'];
+    protected $fillable = ['name','mathangid'];
     public function anh(){
         return $this->belongsTo('App\mathanh','mathanhid','id');
     }

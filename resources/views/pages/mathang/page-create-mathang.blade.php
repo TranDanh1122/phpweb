@@ -44,17 +44,32 @@
                                 </fieldset>
                             </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <fieldset class="form-group">
                                 <label for="gia">Giá (VNĐ) /Vé</label>
                                 <input name="gia" type="text" class="form-control" id="gia"  required style="text-transform:none" >
                             </fieldset>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <fieldset class="form-group">
                                 <label for="soluong">Số lượng Vé</label>
                                 <input name="soluong" type="text" class="form-control" id="soluong"  required style="text-transform:none" >
                             </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                        <fieldset class="form-group ">
+                        <label for="loai">Loại</label>
+
+                            <select id="loai"  class="custom-select" name="loai" style="overflow: hidden;" required="">
+                            <option selected="" disabled="" hidden=""></option>
+                            <option value="bac">Resort </option>
+                            <option value="trung">Nhà vườn</option>
+                            <option value="nam">Biển</option>
+                            <option value="nam">KHác</option>
+
+
+                        </select>
+                        </fieldset>
                         </div>
                         <div class="col-md-12">
                             <fieldset class="form-group">
@@ -177,7 +192,7 @@
 		this.on('successmultiple',function(files,respose){
 			
 				$.each(respose.data,function( key, value ) {
-					anhupload.push(value+',');
+					anhupload.push(value+",");
 				});
                 $('#name-anh').val(anhupload);
 			
@@ -185,8 +200,7 @@
 	}
     });
 
-
-
+	
     })
 </script>
 

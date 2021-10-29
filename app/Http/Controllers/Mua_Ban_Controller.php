@@ -45,6 +45,7 @@ class Mua_Ban_Controller extends Controller
   {
       $datas = $request->all();
       $mathang=new mathang;
+      $mathang->nguoidang=Auth::user()->id;
       $mathang->title=$datas['title'];
       $mathang->gia=$datas['gia'];
       $mathang->soluong=$datas['soluong'];
@@ -54,6 +55,8 @@ class Mua_Ban_Controller extends Controller
       $mathang->ngaybd=date("Y-m-d H:i:s",strtotime($datas['ngaybd']));
       $mathang->ngayhh=date("Y-m-d H:i:s",strtotime($datas['hansd']));
       $mathang->thongtin=$datas['thongtin'];
+      $mathang->loai=$datas['loai'];
+      $mathang->title=$datas['title'];
      $name_anh=substr($datas['name_anh'], 0, -1);
      if(strpos($name_anh,',,')){
         $name_anh= str_replace(',',',,',$name_anh);
@@ -61,12 +64,14 @@ class Mua_Ban_Controller extends Controller
      $mathang->lienhe=$datas['sdt'];
      $mathang->save();
      foreach (explode(',', $name_anh) as $val) {
-         $mathang->loadanh()->save(
-            new mathang_anh([
+         if ($val!="") {
+             $mathang->loadanh()->save(
+                 new mathang_anh([
               
                 'name'=>$val
             ])
-        );
+             );
+         }
      }
     
       return redirect('/dash');
@@ -86,17 +91,21 @@ class Mua_Ban_Controller extends Controller
       $mathang->ngayhh=date("Y-m-d H:i:s",strtotime($datas['hansd']));
       $mathang->thongtin=$datas['thongtin'];
       $mathang->lienhe=$datas['sdt'];
+      $mathang->loai=$datas['loai'];
+
      $name_anh=substr($datas['name_anh'], 0, -1);
      if(strpos($name_anh,',,')){
         $name_anh= str_replace(',',',,',$name_anh);
      }
      foreach (explode(',', $name_anh) as $val) {
-        $mathang->loadanh()->save(
-           new mathang_anh([
+        if ($val!="") {
+            $mathang->loadanh()->save(
+                new mathang_anh([
              
                'name'=>$val
            ])
-       );
+            );
+        }
     }
     
       $mathang->save();
@@ -104,7 +113,7 @@ class Mua_Ban_Controller extends Controller
 
   }
   public function allmathang(){
-      $data=mathang::all();
+      $data=mathang::paginate(10);
       return view('pages.page-all-mathang',['data'=>$data]);
   }
 }

@@ -68,34 +68,151 @@
         <div class="card-body col-4">
           <div class="col-7">
             <h6>Lượt mua vé</h6>
-            <p style="margin-bottom: 0rem;">Khách sạn A<span class="number-statistics"></span></p>
-            <p>Khánh Sạn b<span class="number-statistics"></span></p>
+            <table class="table">
+
+            <tbody>
+              @foreach($topmua as $key=>$value)
+            <tr class="mb-1">
+                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                   src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                   /></td>
+                   
+                   <td>
+                        <div  class="d-flex  flex-column">
+                           <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+               
+                           <p class="bg-transparent bg-gradient text-black-50">
+                             <small>
+                                           
+                                           
+                                            <span id="luotmua" >120</span>
+                                            
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>{{$value->thongtin}}</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
+                                        </p>
+
+                        </div>
+                           
+                      
+                    </td>
+                   
+                </tr>
+              
+                @endforeach
+               
+
+                
+              </tbody>
+            </table>
           </div>
-          <div class="col-5">
-            <img class="mx-auto d-block img-responsive" src="{{asset('mathanganh/01635045058_bai-bien-nha-trang.jpg')}}">
-          </div>
+          
         
         </div>
         <div class="card-body col-4">
           <div class="col-7">
             <h6>Đánh giá tốt</h6>
-            <p style="margin-bottom: 0rem;">Khu Du lịch A<span class="number-statistics"></span></p>
-            <p>Khu Du lịch B<span class="number-statistics"></span></p>
+            <table class="table">
+
+            <tbody>
+              @foreach($toprate as $key=>$value)
+            <tr class="mb-1">
+                  <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  /></td>
+                  
+                  <td>
+                        <div  class="d-flex  flex-column">
+                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+              
+                          <p class="bg-transparent bg-gradient text-black-50">
+                            <small>
+                                          
+                                          
+                                            <span id="luotmua" >120</span>
+                                            
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>{{$value->thongtin}}</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
+                                        </p>
+
+                        </div>
+                          
+                      
+                    </td>
+                  
+                </tr>
+              
+                @endforeach
+              
+
+                
+              </tbody>
+            </table>
           </div>
-          <div class="col-5">
-          <img class="mx-auto d-block img-responsive" src="{{asset('mathanganh/01635045058_bai-bien-nha-trang.jpg')}}">
-          </div>
+         
         
         </div>
         <div class="card-body col-4">
           <div class="col-7">
             <h6>Giá rẻ</h6>
-            <p style="margin-bottom: 0rem;">Nhà nghỉ A<span class="number-statistics"></span></p>
-            <p>Nhà nghỉ B<span class="number-statistics"></span></p>
+            <table class="table">
+
+            <tbody>
+              @foreach($topgiare as $key=>$value)
+            <tr class="mb-1">
+                  <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  /></td>
+                  
+                  <td>
+                        <div  class="d-flex  flex-column">
+                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+              
+                          <p class="bg-transparent bg-gradient text-black-50">
+                            <small>
+                                          
+                                          
+                                            <span id="luotmua" >120</span>
+                                            
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>{{$value->thongtin}}</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
+                                        </p>
+
+                        </div>
+                          
+                      
+                    </td>
+                  
+                </tr>
+              
+                @endforeach
+              
+
+                
+              </tbody>
+            </table>
           </div>
-          <div class="col-5">
-          <img class="mx-auto d-block img-responsive" src="{{asset('mathanganh/01635045058_bai-bien-nha-trang.jpg')}}">
-          </div>
+          
         
         </div>
         </div>
@@ -113,25 +230,101 @@
         <div class="card-body col-5">
           <div class="col-7">
             <h6>Lượt mua vé</h6>
-            <p style="margin-bottom: 0rem;">Khách sạn A<span class="number-statistics"></span></p>
-            <p>Khánh Sạn b<span class="number-statistics"></span></p>
+            <table class="table">
+
+            <tbody>
+              @foreach($topgiare as $key=>$value)
+            <tr class="mb-1">
+                  <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  /></td>
+                  
+                  <td>
+                        <div  class="d-flex  flex-column">
+                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+              
+                          <p class="bg-transparent bg-gradient text-black-50">
+                            <small>
+                                          
+                                          
+                                            <span id="luotmua" >120</span>
+                                            
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>{{$value->thongtin}}</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
+                                        </p>
+
+                        </div>
+                          
+                      
+                    </td>
+                  
+                </tr>
+              
+                @endforeach
+              
+
+                
+              </tbody>
+            </table>
           </div>
-          <div class="col-5">
-          <img class="mx-auto d-block img-responsive" src="{{asset('mathanganh/01635045058_bai-bien-nha-trang.jpg')}}">
-          </div>
-        
         </div>
 
         <div class="col-2"></div>
         <div class="card-body col-5">
           <div class="col-7">
             <h6>Lượt mua vé</h6>
-            <p style="margin-bottom: 0rem;">Khách sạn A<span class="number-statistics"></span></p>
-            <p>Khánh Sạn b<span class="number-statistics"></span></p>
+            <table class="table">
+
+            <tbody>
+              @foreach($topgiare as $key=>$value)
+            <tr class="mb-1">
+                  <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  /></td>
+                  
+                  <td>
+                        <div  class="d-flex  flex-column">
+                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+              
+                          <p class="bg-transparent bg-gradient text-black-50">
+                            <small>
+                                          
+                                          
+                                            <span id="luotmua" >120</span>
+                                            
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>{{$value->thongtin}}</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
+                                        </p>
+
+                        </div>
+                          
+                      
+                    </td>
+                  
+                </tr>
+              
+                @endforeach
+              
+
+                
+              </tbody>
+            </table>
           </div>
-          <div class="col-5">
-          <img class="mx-auto d-block img-responsive" src="{{asset('mathanganh/01635045058_bai-bien-nha-trang.jpg')}}">
-          </div>
+         
         
         </div>
         </div>
