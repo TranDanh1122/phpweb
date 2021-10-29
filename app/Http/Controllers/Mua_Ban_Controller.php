@@ -24,6 +24,7 @@ class Mua_Ban_Controller extends Controller
 }
 public function viewsanpham($id){
     $data=mathang::find($id);
+
   return view('pages.mathang.page-view-mathang',['data'=>$data]);
 }
   public function upanh(Request $request)

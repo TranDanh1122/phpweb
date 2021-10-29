@@ -94,12 +94,12 @@
                 @if($data->loadanh)
                 <div class="gallery">
                     <div id="main-image">
-                        <img src="{{asset($data->loadanh->first()->name)}}" alt="" id="main-img">
+                        <img src="{{asset('mathanganh/'.$data->loadanh->first()->name)}}" alt="" id="main-img">
                     </div>
                     <div id="sub-image">
                         <ul>
                             @foreach($data->loadanh as $anh)
-                            <li><img src="{{asset($anh->name)}}" alt=""></li>
+                            <li><img src="{{asset('mathanganh/'.$anh->name)}}" alt=""></li>
                             @endforeach
                         </ul>
                     </div>
