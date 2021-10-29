@@ -208,8 +208,8 @@
         maxFilesize: 2,
         addRemoveLinks: true,
         uploadMultiple: true,
-        parallelUploads:100,
-        maxFiles: 100,
+        parallelUploads:4,
+        maxFiles: 4,
         params:{
             _token : token,
         },
