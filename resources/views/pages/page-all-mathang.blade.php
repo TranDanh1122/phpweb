@@ -85,7 +85,7 @@
                
                            <p class="bg-transparent bg-gradient text-black-50">
                              <small>
-                                            <a class="name" href="{{url('nguoidang/post')}}" target="_blank" >Người đăng:{{$value->nguoidang?$value->nguoidang->Name:''}}</a>
+                                            <a class="name" href="{{url('nguoidang/post')}}" target="_blank" >Người đăng:{{$value->ngdang?$value->ngdang->Name:''}}</a>
                                             <em>|</em>
                                             <a href="{{url('allpost?type=loai&value='.$value->loai)}}" target="_blank">Loại:{{$value->loai}}</a>
                                             <em>|</em>

@@ -14,7 +14,7 @@ class mathang extends Model
     public function loadanh(){
 		return $this->hasMany('App\mathang_anh');
 	}
-  public function nguoidang(){
+  public function ngdang(){
 		return $this->belongsTo('App\User','nguoidang','id');
 	}
 }
