@@ -58,13 +58,13 @@
     max-height: 400px;
 
 }
-.small-image ul{
+.sub-image ul{
     padding-left: 0;
     margin-bottom: 0;
     overflow: hidden;
     margin-top: 3px;
 }
-.small-image ul li{
+.sub-image ul li{
     width: calc(100%/4);
     float: left;
     display: -webkit-box;
@@ -78,7 +78,7 @@
     align-items:center;
     height: 87px;
 }
-.small-image ul li img{
+.sub-image ul li img{
     width: auto;
     margin: auto;
     height: auto;
