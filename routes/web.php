@@ -20,6 +20,7 @@ Route::post('/dangky', 'AuthController@register')->name('saveuser');
 Route::post('/dangnhap', 'AuthController@login')->name('dangnhap');
 Route::get('/dangbai','Mua_Ban_Controller@loadcreatepage')->name('dangbaiban');
 Route::get('/suabai/{id}','Mua_Ban_Controller@loadeditpage');
+Route::get('/sanpham/{id}','Mua_Ban_Controller@viewsanpham');
 Route::get('/allpost','Mua_Ban_Controller@allmathang');
 Route::post('/uploadanh', 'Mua_Ban_Controller@upanh')->name('dangnhap');
 Route::post('/luubai', 'Mua_Ban_Controller@store_mathang')->name('luubai');
