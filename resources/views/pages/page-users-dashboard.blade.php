@@ -174,7 +174,7 @@
               @foreach($topgiare as $key=>$value)
             <tr class="mb-1">
                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  src="{{url('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
                   /></td>
                   
                   <td>
@@ -236,7 +236,7 @@
               @foreach($topgiare as $key=>$value)
             <tr class="mb-1">
                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  src="{{url('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
                   /></td>
                   
                   <td>
@@ -286,7 +286,7 @@
               @foreach($topgiare as $key=>$value)
             <tr class="mb-1">
                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  src="{{url('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
                   /></td>
                   
                   <td>

@@ -2,7 +2,7 @@
 <footer class="footer footer-light @if(isset($configData['footerType'])){{$configData['footerClass']}}@endif" style="padding: 0px;">
 <div class="m-0">
         <div class="disable-rounded-right mb-0 p-2 d-flex flex-column justify-content-center" style="
-    background-image: url({{asset('images/backgrounds/footer-image.png')}});
+
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;        padding: 1.4rem 2.5em !important;

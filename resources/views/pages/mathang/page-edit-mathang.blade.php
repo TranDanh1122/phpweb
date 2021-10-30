@@ -72,12 +72,12 @@
                         <fieldset class="form-group ">
                         <label for="loai">Loại</label>
 
-                            <select id="loai"  class="custom-select" name="loai" style="overflow: hidden;" required="">
+                        <select id="loai"  class="custom-select" name="loai" style="overflow: hidden;" required="">
                             <option selected="" disabled="" hidden=""></option>
-                            <option value="bac">Resort </option>
-                            <option value="trung">Nhà vườn</option>
-                            <option value="nam">Biển</option>
-                            <option value="nam">KHác</option>
+                            <option value="Resort">Resort </option>
+                            <option value="Nhà vườn">Nhà vườn</option>
+                            <option value="Biển">Biển</option>
+                            <option value="Khác">Khác</option>
 
 
                         </select>

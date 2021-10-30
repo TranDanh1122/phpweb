@@ -1,7 +1,7 @@
 
 @extends('layouts.contentLayoutMaster')
 {{-- title --}}
-@section('title','Sửa Thông Tin Sản Phẩm')
+@section('title','Thông Tin Sản Phẩm')
 
 {{-- page style --}}
 @section('page-styles')
@@ -27,90 +27,63 @@
 .table-2 th {
   border: 1px solid #dfe3e7 !important;
 }
-.container{
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    max-width: 400px;
-    margin-left: 150px;
+#sub-image ul li{
+    float:left;
 }
-.gallery{
-    width: 100%;
-}
-.gallery.main-image{
-    display: -webkit-box;
-    display:-moz-box;
-    display:-ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    align-items:center;
-
-
+#sub-image ul li img{
+    max-height: 90px;
+    max-width: 120px;
+    min-width: 90px;
+    min-height: 120px;
+    margin: 10px;
+    cursor: pointer;
+    display:block;
+    opacity: 0.6;
 
 }
-.gallery.main-image img{
-    width: auto;
-    height: auto;
-    margin: auto;
-    max-height: 400px;
+#sub-image ul li img:hover{
+   
+    opacity: 1;
 
 }
-.gallery.sub-image ul{
-    padding-left: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    margin-top: 3px;
+li {
+    list-style-type: none;
 }
-.gallery.sub-image ul li{
-    width: calc(100%/4);
-    float: left;
-    display: -webkit-box;
-    display:-moz-box;
-    display:-ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    align-items:center;
-    height: 87px;
-}
-.gallery.sub-image ul li img{
-    width: auto;
-    margin: auto;
-    height: auto;
-    max-height: 87px;
+#main-image{
+    align-items: center ;
+   
 }
     </style>
 
 <!-- Form wizard with step validation section start -->
 <section id="validation">
-	<div class="row align-items-end">
-		<div class="col-12">
+    <div class="row align-items-end">
+        <div class="col-md-5">
 			<div class="container">
                 @if($data->loadanh)
                 <div class="gallery">
-                    <div id="main-image">
-                        <img src="{{asset('mathanganh/'.$data->loadanh->first()->name)}}" alt="" id="main-img">
+                    <div id="main-image ml-1">
+                        <img src="{{asset('mathanganh/'.$data->loadanh->first()->name)}}" style="min-width: 600px; min-height: 400px;max-width: 600px;max-height: 400px;" alt="" id="main-img">
                     </div>
                     <div id="sub-image">
                         <ul>
-                            @foreach($data->loadanh as $anh)
-                            <li><img src="{{asset('mathanganh/'.$anh->name)}}" alt=""></li>
+                            @foreach($data->loadanh as $key=> $anh)
+                            <li><img src="{{asset('mathanganh/'.$anh->name)}}" {{$key==0?"style='opacity: 1;'":''}} alt=""></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
                 @endif
             </div>
-		</div>
-		<div class="col-12">
-			
-		</div>
-	</div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+
+
+        </div>
+
+
 </section>
 <!-- Form wizard with step validation section end -->
 
@@ -133,11 +106,12 @@
 @section('page-scripts')
 <script src="{{asset('js/scripts/pickers/dateTime/pick-a-datetime.js')}}"></script>
 
-<script>  
+<script type="text/javascript">  
  $(document).ready(function(){
-     $(".small-image ul li").click(function(){
+     $("#sub-image ul li").hover(function(){
          var img_src=$(this).find("img").attr("src");
-         $("img#main-img").attr("src",img_src);
+       
+         $("#main-img").attr("src",img_src);
      })
  })
 </script>
