@@ -118,7 +118,7 @@ public function viewsanpham($id){
 
   }
   public function allmathang(){
-      $data=mathang::paginate(10);
+      $data=mathang::paginate(4);
       return view('pages.page-all-mathang',['data'=>$data]);
   }
 }

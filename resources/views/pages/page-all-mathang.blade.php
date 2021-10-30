@@ -19,6 +19,29 @@
 .table-2 th {
   border: 0px solid #f3f5f7 !important;
 }
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: purple;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  /* text-decoration: underline; */
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
     </style>
 
 <!-- Column selectors with Export Options and print table -->
@@ -75,13 +98,13 @@
               <tbody>
                 @foreach($data as $key=>$value)
                <tr class="mb-1">
-                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                   src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
-                   /></td>
+                   <td><a href="{{url('sanpham/'.$value->id)}}"><img  alt="postimage" style="  max-width: 250px;max-height: 300px;"
+                   src="{{url('/mathanganh/'.$value->loadanh->first()->name)}}"
+                   /></a></td>
                    
                    <td>
                         <div  class="d-flex  flex-column">
-                           <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+                           <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
                
                            <p class="bg-transparent bg-gradient text-black-50">
                              <small>
@@ -111,10 +134,10 @@
                     </td>
                     <td>
                       <div class="d-flex justify-content-between">
-                          <button type="button" class="btn btn-outline-primary"
-                                  href="{{url('suabai/'.$value->id)}}">Edit</button>
-                          <button type="button" class="btn btn-outline-danger"
-                                  href="{{url('suabai/'.$value->id)}}">View</button>
+                          <a class="btn btn-outline-primary"
+                                  href="{{url('suabai/'.$value->id)}}">Edit</a>
+                          <a class="btn btn-outline-danger"
+                                  href="{{url('sanpham/'.$value->id)}}">View</a>
                                   <div>
                        
                     </td>
