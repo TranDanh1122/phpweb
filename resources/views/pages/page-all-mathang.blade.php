@@ -70,7 +70,7 @@
   <div class="col-md-8 bg-white">
   <h1>Kết quả liên quan</h1>
 
-            <table class="table">
+            <table class="table table-bordered">
 
               <tbody>
                 @foreach($data as $key=>$value)
