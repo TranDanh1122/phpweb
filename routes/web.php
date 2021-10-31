@@ -26,3 +26,4 @@ Route::post('/uploadanh', 'Mua_Ban_Controller@upanh')->name('dangnhap');
 Route::post('/luubai', 'Mua_Ban_Controller@store_mathang')->name('luubai');
 Route::post('/editbai/{id}', 'Mua_Ban_Controller@edit_mathang')->name('suabai');
 Route::post('/luuanh', 'Mua_Ban_Controller@luuanh');
+Route::post('/cmt', 'Mua_Ban_Controller@savecomment');

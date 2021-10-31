@@ -8,6 +8,7 @@ use App\mathang_anh;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use App\comment;
 use Session;
 use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
@@ -120,5 +121,26 @@ public function viewsanpham($id){
   public function allmathang(){
       $data=mathang::paginate(4);
       return view('pages.page-all-mathang',['data'=>$data]);
+  }
+  public function savecomment(Request $request){
+    $datas = $request->all();
+    $mathang=mathang::find($datas['id-mathang']);
+    $cmt=new comment;
+    $cmt->text= $datas['text'];
+    $cmt->nguoicmt=Auth::user()->id;
+    $cmt->mathang_id= $datas['id-mathang'];
+    $cmt->save();
+    $avatar=[];
+    $name=[];
+    foreach($mathang->getcmt as $cmt) {       
+        array_push($avatar,$cmt->usercmt->avatar);
+        array_push($name,$cmt->usercmt->Name);
+    }
+
+    return response()->json([
+        'cmt' =>  $mathang->getcmt,
+        'avatar'=>$avatar,
+        'name'=>$name,
+    ]);
   }
 }

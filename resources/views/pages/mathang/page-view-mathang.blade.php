@@ -16,17 +16,30 @@
 @section('content')
 
 <style>
-    .table-2 th {
-  background-color: #037ffa;
-  color: #fff !important;
-  text-decoration: underline;
-  text-align: center;
+    
+textarea {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
 }
 
-.table-2 td,
-.table-2 th {
-  border: 1px solid #dfe3e7 !important;
+
+
+
+
+.comment {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
+
+
+
 #sub-image ul li{
     float:left;
 }
@@ -80,8 +93,76 @@ li {
 
         </div>
 
-
+        <div class="col-md-12 pills-stacked">
+            <ul class="nav nav-pills flex-row">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center {{session()->has('tab')?'':'active'}}" id="account-pill-general" data-toggle="pill" href="#binhluan" aria-expanded="true">
+                                <span>Bình Luận</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" id="account-pill-log" data-toggle="pill" href="#danhgia" aria-expanded="false">
+                                <span>Đánh giá</span>
+                            </a>
+                        </li>
+                    </ul>
         </div>
+    <div class="col-md-12 bg-white">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane {{session()->has('tab')?'fade':'active'}}" id="binhluan" aria-labelledby="account-pill-general" aria-expanded="true">
+                <div class="comment">
+                   
+                    <fieldset class="form-group ">
+                      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                    </fieldset>
+                      <input type="button" id="write-cmt" value="Bình luận">
+                   <table id="comment" class="w-50 mt-1 bg-white">
+                       <tbody>
+                       @if($data->getcmt)
+                       @foreach($data->getcmt as $cmt)
+                       <tr class="mb-1">
+                           <td>
+                         <div class="d-flex mb-2  justify-content-start">
+                        <img class="mr-2" alt="postimage" style="  max-width: 50px;max-height: 100px;"
+                        src="{{url('/avatar/'.$cmt->usercmt->avatar)}}"
+                        />
+                        <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$cmt->usercmt->Name}}</a>
+
+                         </div>
+                        </td>
+                        </tr>
+
+                         <tr>
+                       <td>
+                             <div  class="d-flex  flex-column">
+                    
+                                
+                                             <p class="intro"  style="font-size: 18px;">
+                                             <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">{{$cmt->text}}</textarea>
+     
+                                             </p>
+                                             
+     
+                             </div>
+                              
+                             
+                            </td>
+                        
+                         
+                        </tr>
+                       @endforeach
+                       @endif
+                    </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="danhgia" aria-labelledby="account-pill-general" aria-expanded="true">
+                đánh giá	
+            </div>
+        </div>
+    </div>
+    
+            </div>
 
 
 </section>
@@ -112,6 +193,54 @@ li {
          var img_src=$(this).find("img").attr("src");
        
          $("#main-img").attr("src",img_src);
+     })
+     $("#write-cmt").click(function(){
+         if('{{Auth::user()?1:0}}'==0){
+             alert('Hãy đăng nhập/đăng kí để bình luận');
+             return false;
+         }
+        $.ajax({
+        type: "POST",
+        url: "{{ url('/cmt') }}",
+        data: {
+          'id-mathang' : '{{$data->id}}',
+          'text': $("#subject").val(),
+          _token: "{{ csrf_token() }}",
+        },
+        dataType: 'json',
+        success: function (respose) {
+        var listcmt = $('#comment');
+        listcmt.empty();
+        console.log(respose.cmt);
+          $.each(respose.cmt,function( key, value ) {
+            var newline = $(document.createElement('tbody'));
+            newline.append(`
+            <tr class="mb-1 bg-white">
+                <td>
+            <img  alt="postimage" style="  max-width: 50px;max-height: 100px;" src="{{url('avatar/')}}/`+ respose.avatar[key] + `"/>
+            <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+respose.name[key]+`</a>
+            </td>   
+            </tr>
+                <tr class="mb-1 bg-white">
+                    <td>
+            <div  class="d-flex  flex-column">
+                            <p class="intro"  style="font-size: 18px;">
+                                <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">`+value.text+`</textarea>
+     
+                            </p>
+                                             
+     
+                    </div>
+                    </td>
+                    </tr>`);
+              newline.appendTo("#comment");
+
+          });
+
+        }
+      });
+
+
      })
  })
 </script>
