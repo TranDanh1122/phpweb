@@ -17,6 +17,9 @@ class mathang extends Model
   public function getcmt(){
 		return $this->hasMany('App\comment');
 	}
+  public function getdanhgia(){
+		return $this->hasMany('App\danhgia');
+	}
   public function ngdang(){
 		return $this->belongsTo('App\User','nguoidang','id');
 	}

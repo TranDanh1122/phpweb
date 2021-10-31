@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
 use App\comment;
+use App\danhgia;
 use Session;
 use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
@@ -139,6 +140,28 @@ public function viewsanpham($id){
 
     return response()->json([
         'cmt' =>  $mathang->getcmt,
+        'avatar'=>$avatar,
+        'name'=>$name,
+    ]);
+  }
+  public function savedanhgia(Request $request){
+    $datas = $request->all();
+    $mathang=mathang::find($datas['id-mathang']);
+    $danhgia=new danhgia;
+    $danhgia->text= $datas['text'];
+    $danhgia->nguoidanhgia=Auth::user()->id;
+    $danhgia->mathang_id= $datas['id-mathang'];
+    $danhgia-> rate= $datas['rate'];
+    $danhgia->save();
+    $avatar=[];
+    $name=[];
+    foreach($mathang->getdanhgia as $cmt) {       
+        array_push($avatar,$cmt->userdanhgia->avatar);
+        array_push($name,$cmt->userdanhgia->Name);
+    }
+
+    return response()->json([
+        'danhgia' =>  $mathang->getdanhgia,
         'avatar'=>$avatar,
         'name'=>$name,
     ]);

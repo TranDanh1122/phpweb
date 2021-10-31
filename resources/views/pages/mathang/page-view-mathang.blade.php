@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('vendors/css/pickers/daterange/daterangepicker.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendors/css/file-uploaders/dropzone.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/plugins/file-uploaders/dropzone.css')}}">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
@@ -112,7 +112,41 @@ li {
     -webkit-appearance:none;
     margin:0;
 }
+.checked {
+  color: orange;
+}
+.rating {
+    float:left;
+    width:300px;
+}
+.rating span { float:right; position:relative; }
+.rating span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
 
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label {
+    background:#F90;
+    color:#FFF;
+}
     </style>
 
 <!-- Form wizard with step validation section start -->
@@ -193,7 +227,7 @@ li {
                       <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
                     </fieldset>
                       <input type="button" id="write-cmt" value="Bình luận">
-                   <table id="comment" class="w-50 mt-1 bg-white">
+                   <table id="comment-table" class="w-50 mt-1 bg-white">
                        <tbody>
                        @if($data->getcmt)
                        @foreach($data->getcmt as $cmt)
@@ -234,7 +268,63 @@ li {
                   </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="danhgia" aria-labelledby="account-pill-general" aria-expanded="true">
-                đánh giá	
+                <div class="rating">
+    
+                    <span  ><input type="radio"  name="rating"  id="str5" value="5"><label  for="str5"></label></span>
+             
+                    <span><input type="radio"  name="rating" id="str4"  value="4"><label  for="str4"></label></span>
+                    <span><input type="radio"  name="rating" id="str3" value="3"><label for="str3"></label></span>
+                    <span><input type="radio" name="rating" id="str2" value="2"><label  for="str2"></label></span>
+                    <span><input type="radio"  name="rating" id="str1" value="1"><label  for="str1"></label></span>
+                </div>
+                <fieldset class="form-group ">
+                    <textarea id="text-danhgia" name="danhgia" placeholder="Write something.." style="height:200px"></textarea>
+                  </fieldset>
+                    <input type="button" id="write-danhgia" value="Đánh giá sản phẩm">
+                 <table id="danhgia-table" class="w-50 mt-1 bg-white">
+                     <tbody>
+                     @if($data->getdanhgia)
+                     @foreach($data->getdanhgia as $danhgia)
+                     <tr class="mb-1">
+                         <td>
+                       <div class="d-flex mb-2  justify-content-start">
+                      <img class="mr-2" alt="postimage" style="  max-width: 50px;max-height: 100px;"
+                      src="{{url('/avatar/'.$danhgia->userdanhgia->avatar)}}"
+                      />
+                      <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$danhgia->userdanhgia->Name}}</a>
+
+                       </div>
+                      </td>
+                      </tr>
+
+                       <tr>
+                     <td>
+                           <div  class="d-flex  flex-column">
+                               <div style="float: right;">
+                        
+                            @for($i=1;$i <= 5;$i++)
+                            <span class="fa fa-star {{$i<=$danhgia->rate?'checked':''}}"></span>
+                        
+                             @endfor
+                            </div>
+                              
+                                           <p class="intro"  style="font-size: 18px;">
+                                           <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">{{$danhgia->text}}</textarea>
+   
+                                           </p>
+                                           
+   
+                           </div>
+                            
+                           
+                          </td>
+                      
+                       
+                      </tr>
+                     @endforeach
+                     @endif
+                  </tbody>
+                  </table>	
             </div>
         </div>
     </div>
@@ -288,7 +378,7 @@ li {
         },
         dataType: 'json',
         success: function (respose) {
-        var listcmt = $('#comment');
+        var listcmt = $('#comment-table');
         listcmt.empty();
         console.log(respose.cmt);
           $.each(respose.cmt,function( key, value ) {
@@ -296,23 +386,105 @@ li {
             newline.append(`
             <tr class="mb-1 bg-white">
                 <td>
-            <img  alt="postimage" style="  max-width: 50px;max-height: 100px;" src="{{url('avatar/')}}/`+ respose.avatar[key] + `"/>
-            <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+respose.name[key]+`</a>
-            </td>   
+                    <img  alt="postimage" style="  max-width: 50px;max-height: 100px;" src="{{url('avatar/')}}/`+ respose.avatar[key] + `"/>
+                    <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+respose.name[key]+`</a>
+                </td>   
             </tr>
-                <tr class="mb-1 bg-white">
-                    <td>
-            <div  class="d-flex  flex-column">
-                            <p class="intro"  style="font-size: 18px;">
-                                <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">`+value.text+`</textarea>
+            <tr class="mb-1 bg-white">
+                <td>
+                    <div  class="d-flex  flex-column">
+                        <p class="intro"  style="font-size: 18px;">
+                            <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">`+value.text+`</textarea>
      
-                            </p>
-                                             
-     
+                        </p>
                     </div>
-                    </td>
-                    </tr>`);
-              newline.appendTo("#comment");
+                </td>
+            </tr>`);
+              newline.appendTo("#comment-table");
+
+          });
+
+        }
+      });
+
+
+     })
+
+
+//danh gia
+     $(".rating input:radio").attr("checked", false);
+
+        $('.rating input').click(function () {
+            $(".rating span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+        var userRating;
+        $('input:radio').change(
+        function(){
+             userRating = this.value;
+          
+        }); 
+
+
+        $("#write-danhgia").click(function(){
+         if('{{Auth::user()?1:0}}'==0){
+             alert('Hãy đăng nhập/đăng kí và mua hàng để đánh giá');
+             return false;
+         }
+        $.ajax({
+        type: "POST",
+        url: "{{ url('/danhgia') }}",
+        data: {
+          'id-mathang' : '{{$data->id}}',
+          'rate' : userRating,
+          'text': $("#text-danhgia").val(),
+          _token: "{{ csrf_token() }}",
+        },
+        dataType: 'json',
+        success: function (respose) {
+        var listcmt = $('#danhgia-table');
+        listcmt.empty();
+          $.each(respose.danhgia,function( key, value ) {
+            var newline = $(document.createElement('tbody'));
+            var ratelight= '';
+            
+            var ratedark= '';
+            var index;
+            for (index = 1; index <=5; index++) {
+                if(index<=value.rate){
+                    ratelight=ratelight.concat(`
+                    <span class="fa fa-star checked"></span>
+
+                            `);
+                }else{
+                    ratedark=ratedark.concat(`
+                <span class="fa fa-star"></span>
+
+                `);}
+            
+                
+            }
+            newline.append(`
+        <tr class="mb-1 bg-white">
+            <td>
+                <img  alt="postimage" style="  max-width: 50px;max-height: 100px;" src="{{url('avatar/')}}/`+ respose.avatar[key] + `"/>
+                <a href="{{url('profile')}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+respose.name[key]+`</a>
+            </td>   
+        </tr>
+        <tr class="mb-1 bg-white">
+            <td>
+                <div  class="d-flex  flex-column">
+                    <div style="float: right;"> 
+                        `+ratelight+ratedark+`
+                    </div>
+                    <p class="intro"  style="font-size: 18px;">
+                    <textarea class="border border-top-0 border-right-0 border-left-0" style="height:100px;width: 700px;">`+value.text+`</textarea>
+     
+                    </p>
+                </div>
+             </td>
+        </tr>`);
+              newline.appendTo("#danhgia-table");
 
           });
 
