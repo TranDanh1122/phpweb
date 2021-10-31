@@ -53,12 +53,59 @@ li {
     align-items: center ;
    
 }
+/*style tang so luong*/
+.buttons_added {
+    opacity:1;
+    display:inline-block;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    white-space:nowrap;
+    vertical-align:top;
+}
+.is-form {
+    overflow:hidden;
+    position:relative;
+    background-color:#f9f9f9;
+    height:2.2rem;
+    width:1.9rem;
+    padding:0;
+    text-shadow:1px 1px 1px #fff;
+    border:1px solid #ddd;
+}
+.is-form:focus,.input-text:focus {
+    outline:none;
+}
+.is-form.minus {
+    border-radius:4px 0 0 4px;
+}
+.is-form.plus {
+    border-radius:0 4px 4px 0;
+}
+.input-qty {
+    background-color:#fff;
+    height:2.2rem;
+    text-align:center;
+    font-size:1rem;
+    display:inline-block;
+    vertical-align:top;
+    margin:0;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    border-left:0;
+    border-right:0;
+    padding:0;
+}
+.input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance:none;
+    margin:0;
+}
+
     </style>
 
 <!-- Form wizard with step validation section start -->
 <section id="validation">
-    <div class="row align-items-end">
-        <div class="col-md-5">
+<div class="row">
+    <div class="col-md-6">
 			<div class="container">
                 @if($data->loadanh)
                 <div class="gallery">
@@ -75,14 +122,40 @@ li {
                 </div>
                 @endif
             </div>
-        </div>
-        <div class="col-md-6">
-
-        </div>
-
-
-        </div>
-
+    </div>
+    <div class="col-md-6" 
+    style="border-width: 3px;border-style: solid;border-color: aqua;padding: 20px;width: 400px;height: 800px; "
+    >   
+    <p style="font-size: 25px;font-family:Times New Roman">Ve di du lich Viet Nam</p>
+    <p> <span>Rate: 1 <strong>*</strong></span> <em>|</em> 
+    <span>Danh gia: 12000 <small>luot</small></span> <em>|</em>
+    <span>Da ban: 1200 <small>ve</small></span>  </p>
+    <p style="font-size: 19px;">Gia Ve: <b style="font-size: 30px;color:red;">99.009 <sup style="color:red;">d</sup></b></p>
+    
+    <p style="font-size: 19px;">Bat Dau: <span>1-1-2021</span>
+    
+    &emsp;&emsp;Ket Thuc: <span>1-2-2021</span></p>
+    <p style="font-size: 19px;">Dia chi: Duong 2-4/tp Nha Trang</p>
+    <p style="font-size: 19px;">Lien he: 19000000</p>
+    <p style="font-size: 19px;">Thong tin chi tiet: </p>
+    <div style="border-width: 2px;border-style: dashed;border-color: aqua;
+    padding: 15px;width: 600px;height: 300px; ">
+    san pham du lich den tu cty du lich
+    </div><br>
+  <div class="buttons_added">
+      <p style="font-size: 19px;"> So luong ve mua: 
+  <input class="minus is-form" type="button" value="-">
+  <input aria-label="quantity" class="input-qty" max="100" min="1" name="" type="number" value="1">
+  <input class="plus is-form" type="button" value="+">
+  <small> So ve con lai: 100 ve</small>
+       </p>
+  </div><br><br><br>
+    <div>
+    <button type="button" class="btn btn-outline-success"><strong>+</strong> Them vao gio</button>
+    <button type="button" class="btn btn-success">Mua ngay</button>
+     </div>
+    </div>
+</div>
 
 </section>
 <!-- Form wizard with step validation section end -->
@@ -115,5 +188,25 @@ li {
      })
  })
 </script>
-
+<script>
+    //xulycongso
+    $('input.input-qty').each(function() {
+  var $this = $(this),
+    qty = $this.parent().find('.is-form'),
+    min = Number($this.attr('min')),
+    max = Number($this.attr('max'))
+  if (min == 0) {
+    var d = 0
+  } else d = min
+  $(qty).on('click', function() {
+    if ($(this).hasClass('minus')) {
+      if (d > min) d += -1
+    } else if ($(this).hasClass('plus')) {
+      var x = Number($this.val()) + 1
+      if (x <= max) d += 1
+    }
+    $this.attr('value', d).val(d)
+  })
+})
+    </script>
 @endsection
