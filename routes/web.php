@@ -28,3 +28,5 @@ Route::post('/editbai/{id}', 'Mua_Ban_Controller@edit_mathang')->name('suabai');
 Route::post('/luuanh', 'Mua_Ban_Controller@luuanh');
 Route::post('/cmt', 'Mua_Ban_Controller@savecomment');
 Route::post('/danhgia', 'Mua_Ban_Controller@savedanhgia');
+Route::get('/payment', 'Mua_Ban_Controller@loadpay');
+Route::post('/payment-reponse', 'Mua_Ban_Controller@savepay')->name('payment');
