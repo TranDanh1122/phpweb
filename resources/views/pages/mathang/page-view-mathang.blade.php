@@ -150,6 +150,13 @@ li {
     </style>
 
 <!-- Form wizard with step validation section start -->
+<?php 
+$tongve= $data->soluong;
+$vedamua=$data->damua;
+$veconlai=$tongve-$vedamua;
+echo($veconlai);
+
+?>
 <section id="validation">
 <div class="row">
     <div class="col-md-6">
@@ -172,38 +179,40 @@ li {
         </div>
         <div class="col-md-6" 
         style="border-width: 3px;border-style: solid;border-color: aqua;padding: 20px;width: 400px;height: 800px; "
-        >   
-        <p style="font-size: 25px;font-family:Times New Roman">Ve di du lich Viet Nam</p>
-        <p> <span>Rate: 1 <strong>*</strong></span> <em>|</em> 
-        <span>Danh gia: 12000 <small>luot</small></span> <em>|</em>
-        <span>Da ban: 1200 <small>ve</small></span>  </p>
-        <p style="font-size: 19px;">Gia Ve: <b style="font-size: 30px;color:red;">99.009 <sup style="color:red;">d</sup></b></p>
+        >
         
-        <p style="font-size: 19px;">Bat Dau: <span>1-1-2021</span>
+        <p style="font-size: 25px;font-family:Times New Roman">{{$data->title}}</p>
+        <p> <span>Rate: {{$data->rate}} <strong>*</strong></span> <em>|</em> 
+        <span>Đánh giá: 1 <small>lượt</small></span> <em>|</em>
+        <span>Đã bán: <?php echo($vedamua); ?> <small>vé</small></span>  </p>
+        <p style="font-size: 19px;">Giá vé: <b style="font-size: 30px;color:red;">{{$data->gia}} <sup style="color:red;">đ</sup></b></p>
         
-        &emsp;&emsp;Ket Thuc: <span>1-2-2021</span></p>
-        <p style="font-size: 19px;">Dia chi: Duong 2-4/tp Nha Trang</p>
-        <p style="font-size: 19px;">Lien he: 19000000</p>
-        <p style="font-size: 19px;">Thong tin chi tiet: </p>
+        <p style="font-size: 19px;">Bắt đầu: {{date("d/m/Y",strtotime($data->ngaybd))}}
+        
+        &emsp;&emsp;Kết thúc: {{date("d/m/Y",strtotime($data->ngayhh))}}</p>
+        <p style="font-size: 19px;">Địa chỉ: {{$data->diachi1}}-{{$data->diachi2}}-{{$data->diachi3}}</p>
+        <p style="font-size: 19px;">Liên hệ: {{$data->lienhe}}</p>
+        <p style="font-size: 19px;">Thông tin chi tiết: </p>
         <div style="border-width: 2px;border-style: dashed;border-color: aqua;
         padding: 15px;width: 600px;height: 300px; ">
-        san pham du lich den tu cty du lich
+        {{$data->thongtin}}
         </div><br>
       <div class="buttons_added">
-          <p style="font-size: 19px;"> So luong ve mua: 
+          <p style="font-size: 19px;"> Số lượng vé mua: 
       <input class="minus is-form" type="button" value="-">
-      <input aria-label="quantity" class="input-qty" max="100" min="1" name="" type="number" value="1">
+      <input aria-label="quantity" class="input-qty" max="<?php echo($tongve) ?>" min="1" name="" type="number" value="1">
       <input class="plus is-form" type="button" value="+">
-      <small> So ve con lai: 100 ve</small>
+      <small> Số vé còn lại: <?php echo($veconlai); ?> vé</small>
            </p>
       </div><br><br><br>
         <div>
-        <button type="button" class="btn btn-outline-success"><strong>+</strong> Them vao gio</button>
+        <button type="button" class="btn btn-outline-success"><strong>+</strong> Thêm vào giỏ</button>
+        &emsp;&emsp;
         <button type="button" class="btn btn-success">Mua ngay</button>
          </div>
         </div>
     </div>
-
+    
         <div class="col-md-12 pills-stacked">
             <ul class="nav nav-pills flex-row">
                         <li class="nav-item">
@@ -503,16 +512,16 @@ li {
     min = Number($this.attr('min')),
     max = Number($this.attr('max'))
   if (min == 0) {
-    var d = 0
-  } else d = min
+    var dem = 0
+  } else dem = min
   $(qty).on('click', function() {
     if ($(this).hasClass('minus')) {
-      if (d > min) d += -1
+      if (dem > min) dem += -1
     } else if ($(this).hasClass('plus')) {
       var x = Number($this.val()) + 1
-      if (x <= max) d += 1
+      if (x <= max) dem += 1
     }
-    $this.attr('value', d).val(d)
+    $this.attr('value', dem).val(dem)
   })
 })
     </script>
