@@ -29,4 +29,6 @@ Route::post('/luuanh', 'Mua_Ban_Controller@luuanh');
 Route::post('/cmt', 'Mua_Ban_Controller@savecomment');
 Route::post('/danhgia', 'Mua_Ban_Controller@savedanhgia');
 Route::get('/payment', 'Mua_Ban_Controller@loadpay');
+Route::get('/edit-profile', 'Mua_Ban_Controller@edituser');
+Route::post('/update-profile', 'Mua_Ban_Controller@userupdate');
 Route::post('/payment-reponse', 'Mua_Ban_Controller@savepay')->name('payment');

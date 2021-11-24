@@ -200,4 +200,28 @@ class Mua_Ban_Controller extends Controller
            
         return back();
     }
+    public function edituser()
+    {
+        $user=User::find(Auth::user()->id);
+        return view('pages.page-user-profile-update',['user'=>$user]);
+    }
+    public function userupdate(Request $request)
+    {
+        $user=User::find(Auth::user()->id);
+        $datas = $request->all();
+        if(!empty($datas['new_avatar'])){
+		$name = '';
+		$file = $datas['new_avatar'];
+		$name = strtotime("now").'_'.$datas['new_avatar']->getClientOriginalName();
+		$file->move('avatar', $name);
+        $user->avatar=$name;
+        }
+        $user->Name= $datas['name'];
+        $user->diachi=  $datas['dchi'];
+        $user->email=  $datas['email'];
+        $user->save();
+        return back();
+        
+				
+    }
 }
