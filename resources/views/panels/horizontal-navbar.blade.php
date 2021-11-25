@@ -189,7 +189,7 @@ navbar-with-menu navbar-brand-center bg-info bg-gradienty fixed-top menu-light">
               <span><img class="round" src="{{asset('avatar/'.Auth::user()->avatar)}}" alt="avatar" height="40" width="40"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right pb-0">
-              <a class="dropdown-item" href="{{asset('page/user/profile')}}"><i class="bx bx-user mr-50"></i> Edit Profile</a>
+              <a class="dropdown-item" href="{{url('edit-profile')}}"><i class="bx bx-user mr-50"></i> Edit Profile</a>
               @if(Auth::user()->loai==2)
               <a class="dropdown-item" href="{{url('/dangbai')}}"><i class="bx bx-envelope mr-50"></i> Đăng bài</a>
               @endif

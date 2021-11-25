@@ -159,10 +159,14 @@ class Mua_Ban_Controller extends Controller
         $danhgia->save();
         $avatar=[];
         $name=[];
-        foreach ($mathang->getdanhgia as $cmt) {
+        $rate=0;
+        foreach ($mathang->getdanhgia as $key=> $cmt) {
             array_push($avatar, $cmt->userdanhgia->avatar);
             array_push($name, $cmt->userdanhgia->Name);
+            $rate+=(int)$cmt->rate;
         }
+        $mathang->rate=$rate/($key+1);
+        $mathang->save();
 
         return response()->json([
         'danhgia' =>  $mathang->getdanhgia,
