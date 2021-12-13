@@ -25,23 +25,23 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="img-fluid" src="{{asset('images/login_banner/11.jpg')}}" alt="First slide"
+          <img class="img-fluid" src="{{asset('images/login_banner/b1.jpg')}}" alt="First slide"
           style="width:1250px;height:300px;">
         </div>
         <div class="carousel-item">
-          <img class="img-fluid" src="{{asset('images/login_banner/22.jpg')}}" alt="2 slide"
+          <img class="img-fluid" src="{{asset('images/login_banner/b2.jpg')}}" alt="2 slide"
           style="width:1250px;height:300px;">
         </div>
         <div class="carousel-item">
-          <img class="img-fluid" src="{{asset('images/login_banner/33.jpg')}}" alt="3 slide"
+          <img class="img-fluid" src="{{asset('images/login_banner/b3.jpg')}}" alt="3 slide"
           style="width:1250px;height:300px;">
         </div>
         <div class="carousel-item">
-          <img class="img-fluid" src="{{asset('images/login_banner/44.jpg')}}" alt="4 slide"
+          <img class="img-fluid" src="{{asset('images/login_banner/b4.jpg')}}" alt="4 slide"
           style="width:1250px;height:300px;">
         </div>
         <div class="carousel-item">
-          <img class="img-fluid" src="{{asset('images/login_banner/55.jpg')}}" alt="5 slide"
+          <img class="img-fluid" src="{{asset('images/login_banner/b5.jpg')}}" alt="5 slide"
           style="width:1250px;height:300px;">
         </div>
 
@@ -220,7 +220,8 @@
     </div>
     <!-- end xep hang -->
 
-    <div class="col-lg-12 ">
+    
+<div class="col-lg-12 ">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title">Đề cử</h5>
