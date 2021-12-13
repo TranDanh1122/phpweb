@@ -206,8 +206,7 @@ echo($veconlai);
            </p>
       </div><br><br><br>
         <div>
-        <button type="button" class="btn btn-outline-success"><strong>+</strong> Thêm vào giỏ</button>
-        &emsp;&emsp;
+        
         <button type="button" class="btn btn-success">Mua ngay</button>
          </div>
         </div>

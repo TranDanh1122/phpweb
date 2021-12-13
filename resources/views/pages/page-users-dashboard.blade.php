@@ -90,18 +90,9 @@
               
                           <p class="bg-transparent bg-gradient text-black-50">
                             <small>           
-                               <span id="luotmua" >{{$value->damua}}</span>                  
+                               <p>Lượt mua: <span id="luotmua" >{{$value->damua}}</span></p>                  
                               </small>
                             </p>
-                                        <!-- <p class="intro"  style="font-size: 18px;">
-                                        <span>{{$value->thongtin}}</span>
-
-                                        </p>
-                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
-                                        <br>
-                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p> -->
-
                         </div>
                           
                       
@@ -166,17 +157,6 @@
                             <small>           
                                <span id="luotmua" >{{$value->rate}}</span>                  
                               </small>
-                           
-
-                                        <!-- <p class="intro"  style="font-size: 18px;">
-                                        <span>{{$value->thongtin}}</span>
-
-                                        </p>
-                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
-                                        <br>
-                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p> -->
-
                         </div>
                           
                       
@@ -223,17 +203,10 @@
               
                           <p class="bg-transparent bg-gradient text-black-50">
                             <small>           
-                               <span id="luotmua" >{{$value->gia}}</span>                  
+                               <p>Giá:<span id="luotmua" >{{$value->gia}}</span>đ<p>                  
                               </small>
                             </p>
-                                        <!-- <p class="intro"  style="font-size: 18px;">
-                                        <span>{{$value->thongtin}}</span>
 
-                                        </p>
-                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
-                                        <br>
-                                        <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p> -->
 
                         </div>
                           

@@ -111,10 +111,10 @@ a:active {
                                             <a class="name" href="{{url('nguoidang/post')}}" target="_blank" >Người đăng:{{$value->ngdang?$value->ngdang->Name:''}}</a>
                                             <em>|</em>
                                             <a href="{{url('allpost?type=loai&value='.$value->loai)}}" target="_blank">Loại:{{$value->loai}}</a>
+                                            <br>
+                                            <span id="rate">Rate:{{$value->rate}}*</span>
                                             <em>|</em>
-                                            <span id="rate">Rate:5 *</span>
-                                            <em>|</em>
-                                            <span id="vé" >Số vé còn lại: 12</span>
+                                            <span id="vé" >Số vé đã mua: {{$value->damua}}</span>
                                             <em>|</em>
                                             <span id="gia" >Giá:{{$value->gia}}</span>
                               </small>
