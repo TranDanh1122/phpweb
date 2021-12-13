@@ -5,10 +5,16 @@
 @section('vendor-styles')
 
 @endsection
+@section('page-styles')
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection
 @section('content')
 <style type="text/css">
-
+.checked {
+  color: orange;
+}
 </style>
 
 <section >
@@ -66,44 +72,53 @@
         <hr></hr>
         <div class="row">
         <div class="card-body col-4">
-          <div class="col-7">
+          <div class="col-12">
             <h6>Lượt mua vé</h6>
             <table class="table">
 
             <tbody>
               @foreach($topmua as $key=>$value)
+              @if($key==0)
             <tr class="mb-1">
-                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                   src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
-                   /></td>
-                   
-                   <td>
+                  <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
+                  src="{{asset('mathanganh/'.$value->loadanh->first()->name)}}"
+                  /></td>
+                  
+                  <td>
                         <div  class="d-flex  flex-column">
-                           <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
-               
-                           <p class="bg-transparent bg-gradient text-black-50">
-                             <small>
-                                           
-                                           
-                                            <span id="luotmua" >120</span>
-                                            
+                          <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+              
+                          <p class="bg-transparent bg-gradient text-black-50">
+                            <small>           
+                               <span id="luotmua" >{{$value->damua}}</span>                  
                               </small>
-                                        </p>
-                                        <p class="intro"  style="font-size: 18px;">
+                            </p>
+                                        <!-- <p class="intro"  style="font-size: 18px;">
                                         <span>{{$value->thongtin}}</span>
 
                                         </p>
                                         <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
                                         <br>
                                         <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p>
+                                        </p> -->
 
                         </div>
-                           
+                          
                       
                     </td>
-                   
+                  
                 </tr>
+                @else
+                <tr>
+
+                  <td colspan="2">
+                    <div class="d-flex justify-content-between">
+                    <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 14px;font-weight: bold !important;">{{$value->title}}</a>
+                    <small>{{$value->damua}}</small>
+                    </div>
+                 </td>
+                </tr>
+                @endif
               
                 @endforeach
                
@@ -116,37 +131,51 @@
         
         </div>
         <div class="card-body col-4">
-          <div class="col-7">
+          <div class="col-12">
             <h6>Đánh giá tốt</h6>
             <table class="table">
 
             <tbody>
               @foreach($toprate as $key=>$value)
+              @if($key==0)
             <tr class="mb-1">
                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                  src="{{asset('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  src="{{asset('mathanganh/'.$value->loadanh->first()->name)}}"
                   /></td>
                   
                   <td>
                         <div  class="d-flex  flex-column">
-                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+                          <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
               
-                          <p class="bg-transparent bg-gradient text-black-50">
-                            <small>
-                                          
-                                          
-                                            <span id="luotmua" >120</span>
-                                            
+                         
+
+                         
+                                    <div  class="d-flex  flex-column">
+                                        <div style="float: right;"> 
+                                        @for($i=1;$i <= 5;$i++)
+                                        @if($i<=$value->rate)
+                                        <span class="fa fa-star checked"></span>
+                                        @else
+                                        <span class="fa fa-star "></span>
+                                        @endif
+                                        @endfor
+                                        </div>
+                                        
+                                    </div>
+                               
+                            <small>           
+                               <span id="luotmua" >{{$value->rate}}</span>                  
                               </small>
-                                        </p>
-                                        <p class="intro"  style="font-size: 18px;">
+                           
+
+                                        <!-- <p class="intro"  style="font-size: 18px;">
                                         <span>{{$value->thongtin}}</span>
 
                                         </p>
                                         <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
                                         <br>
                                         <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p>
+                                        </p> -->
 
                         </div>
                           
@@ -154,8 +183,18 @@
                     </td>
                   
                 </tr>
-              
-                @endforeach
+                @else
+                <tr>
+
+                  <td colspan="2">
+                    <div class="d-flex justify-content-between">
+                    <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 14px;font-weight: bold !important;">{{$value->title}}</a>
+                    <small>{{$value->rate}}</small>
+                    </div>
+                 </td>
+                </tr>
+                @endif
+                 @endforeach
               
 
                 
@@ -166,37 +205,35 @@
         
         </div>
         <div class="card-body col-4">
-          <div class="col-7">
+          <div class="col-12">
             <h6>Giá rẻ</h6>
             <table class="table">
 
             <tbody>
               @foreach($topgiare as $key=>$value)
+              @if($key==0)
             <tr class="mb-1">
                   <td><img  alt="postimage" style="  max-width: 150px;max-height: 200px;"
-                  src="{{url('mathanganh/'.$value->loadanh?($value->loadanh->first()?$value->loadanh->first()->name:''):'')}}"
+                  src="{{asset('mathanganh/'.$value->loadanh->first()->name)}}"
                   /></td>
                   
                   <td>
                         <div  class="d-flex  flex-column">
-                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+                          <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
               
                           <p class="bg-transparent bg-gradient text-black-50">
-                            <small>
-                                          
-                                          
-                                            <span id="luotmua" >120</span>
-                                            
+                            <small>           
+                               <span id="luotmua" >{{$value->gia}}</span>                  
                               </small>
-                                        </p>
-                                        <p class="intro"  style="font-size: 18px;">
+                            </p>
+                                        <!-- <p class="intro"  style="font-size: 18px;">
                                         <span>{{$value->thongtin}}</span>
 
                                         </p>
                                         <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>{{date("d/m/Y",strtotime($value->ngaybd))}}</span></small>
                                         <br>
                                         <small>Kết thúc: <span>{{date("d/m/Y",strtotime($value->ngayhh))}}</span></small>
-                                        </p>
+                                        </p> -->
 
                         </div>
                           
@@ -204,6 +241,17 @@
                     </td>
                   
                 </tr>
+                @else
+                <tr>
+
+                  <td colspan="2">
+                    <div class="d-flex justify-content-between">
+                    <a href="{{url('sanpham/'.$value->id)}}" target="_blank" style="cursor:pointer;font-size: 14px;font-weight: bold !important;">{{$value->title}}</a>
+                    <small>{{$value->gia}}</small>
+                    </div>
+                 </td>
+                </tr>
+                @endif
               
                 @endforeach
               
@@ -242,7 +290,7 @@
                   
                   <td>
                         <div  class="d-flex  flex-column">
-                          <a ref="{{url('suabai/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
+                          <a ref="{{url('sanpham/'.$value->id)}}" target="_blank" style="font-size: 20px;font-weight: bold !important;">{{$value->title}}</a>
               
                           <p class="bg-transparent bg-gradient text-black-50">
                             <small>
