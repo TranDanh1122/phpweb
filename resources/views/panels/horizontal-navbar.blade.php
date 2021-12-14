@@ -193,7 +193,7 @@ navbar-with-menu navbar-brand-center bg-info bg-gradienty fixed-top menu-light">
               @if(Auth::user()->loai==2)
               <a class="dropdown-item" href="{{url('/dangbai')}}"><i class="bx bx-envelope mr-50"></i> Đăng bài</a>
               @endif
-              <a class="dropdown-item" href="{{asset('app/todo')}}"><i class="bx bx-check-square mr-50"></i> Task</a>
+              <a class="dropdown-item" href="{{asset('/allpost')}}"><i class="bx bx-check-square mr-50"></i> Post</a>
               <a class="dropdown-item" href="{{asset('app/chat')}}"><i class="bx bx-message mr-50"></i> Chats</a>
               <div class="dropdown-divider mb-0"></div>
               <a class="dropdown-item" href="{{asset('login')}}"><i class="bx bx-power-off mr-50"></i> Logout</a>
