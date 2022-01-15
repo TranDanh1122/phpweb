@@ -186,6 +186,7 @@ class Mua_Ban_Controller extends Controller
        $customer= \Stripe\Customer::create([
             'payment_method' => $request->token,
           ]);
+       
           \Stripe\PaymentMethod::all([
             'customer' => $customer->id,
             'type' => 'card',

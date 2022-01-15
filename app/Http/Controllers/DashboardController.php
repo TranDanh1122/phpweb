@@ -17,7 +17,7 @@ class DashboardController extends Controller
 
         $topgiare=mathang::orderBy('gia','ASC')->get()->take(5);
         $datas=mathang::all();
-        $anh=$datas->loadanh()->first();
+ 
 
 
         return view('pages.page-users-dashboard',['topgiare'=>$topgiare,'topmua'=>$topluotmua,'toprate'=>$toprate,'datas'=>$datas]);
