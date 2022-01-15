@@ -6,8 +6,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;        padding: 1.4rem 2.5em !important;
+    background-color:#b3ffff
 ">
-          <p><strong>Trần Thành Danh & Huỳnh Trung Thành</strong><br>
+          <p><strong>@ Trần Thành Danh & Huỳnh Trung Thành</strong><br>
          Khoa Công Nghệ Thông Tin- Tác chiến Không Gian Mạng,
           Lớp DHCN5, Trường Đại học Thông tin Liên lạc<br>
           <strong>DĐ&nbsp;&nbsp;&nbsp;&nbsp;</strong>    0925516991       <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SĐT&nbsp;&nbsp;&nbsp;&nbsp;</strong>   (058)3 123 123

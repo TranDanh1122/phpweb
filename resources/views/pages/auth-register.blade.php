@@ -47,7 +47,7 @@
                         <input type="email" class="form-control" id="mail" name="email"
                             placeholder="abc@gmail.con" required></div>
                     <div class="form-group mb-2">
-                        <label class="text-bold-600" for="pass">Password</label>
+                        <label class="text-bold-600" for="pass">Mật khẩu</label>
                         <input type="password" class="form-control" id="pass" name="pass"
                             placeholder="Password" required>
                     </div>
@@ -88,7 +88,7 @@
                         </ul>
                       </div>
                   </div>
-                    <button type="submit" class="btn btn-primary glow position-relative w-100">SIGN UP<i
+                    <button type="submit" class="btn btn-primary glow position-relative w-100">Đăng ký<i
                             id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
 
                 </form>

@@ -29,16 +29,16 @@
               <form action="{{action('AuthController@login')}}" method="post"  enctype="multipart/form-data">
               @csrf   
               <div class="form-group mb-50">
-                      <label class="text-bold-600" for="mail">Email address</label>
+                      <label class="text-bold-600" for="mail">Email</label>
                       <input type="email" class="form-control" id="mail" name="email"
                           placeholder="Email address"></div>
                   <div class="form-group">
-                      <label class="text-bold-600" for="pass">Password</label>
+                      <label class="text-bold-600" for="pass">Mật khẩu</label>
                       <input type="password" class="form-control" id="pass" name="password"
                           placeholder="Password">
                   </div>
 
-                  <button type="submit" class="btn btn-primary glow w-100 position-relative">Login<i
+                  <button type="submit" class="btn btn-primary glow w-100 position-relative">Đăng nhập<i
                           id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
               </form>
               <hr>

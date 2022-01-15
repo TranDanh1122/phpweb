@@ -20,12 +20,13 @@ License: You must have a valid license purchased only from themeforest(the above
   $configData = Helper::applClasses();
 @endphp
 
-<html class="loading" lang="en" data-textdirection="ltr">
-  <!-- BEGIN: Head-->
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<html class="no-js" >
+
+	<head>
+		<!-- META DATA -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title') - Frest - Bootstrap HTML admin template</title>
@@ -38,19 +39,18 @@ License: You must have a valid license purchased only from themeforest(the above
   <!-- END: Head-->
 
   <!-- BEGIN: Body-->
-  <body class="vertical-layout 1-column navbar-sticky {{$configData['bodyCustomClass']}} footer-static blank-page
-  @if($configData['theme'] === 'dark'){{'dark-layout'}} @elseif($configData['theme'] === 'semi-dark'){{'semi-dark-layout'}} @else {{'light-layout'}} @endif" data-open="click" data-menu="vertical-menu-modern" data-col="1-column" data-framework="laravel">
+  <body>
+		<!--[if lte IE 9]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+			your browser</a> to improve your experience and security.</p>
+		<![endif]-->
+
+		
+
     <!-- BEGIN: Content-->
-    <div class="app-content content">
-      <div class="content-overlay"></div>
-      <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
-        <div class="content-body">
+
          @yield('content')
-        </div>
-      </div>
-    </div>
+        
     <!-- END: Content-->
 
     {{-- scripts --}}
