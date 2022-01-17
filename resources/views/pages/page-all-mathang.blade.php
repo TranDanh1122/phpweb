@@ -1,4 +1,4 @@
-@extends('layouts.contentLayoutMaster')
+@extends('layouts.fullLayoutMaster')
 {{-- title --}}
 @section('title','Dashboard Lesen Kelas')
 
@@ -44,8 +44,6 @@ a:active {
 }
     </style>
 
-<!-- Column selectors with Export Options and print table -->
-<section id="column-selectors">
 
 
        

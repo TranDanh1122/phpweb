@@ -12,14 +12,15 @@ class DashboardController extends Controller
 
 
     public function usersDash(){
-        $topluotmua=mathang::orderBy('damua','DESC')->get()->take(5);
+        $topluotmua=mathang::orderBy('damua','DESC')->get()->take(6);
         $toprate=mathang::orderBy('rate','DESC')->get()->take(5);
 
-        $topgiare=mathang::orderBy('gia','ASC')->get()->take(5);
+        $topgiare=mathang::orderBy('gia','ASC')->first();
         $datas=mathang::all();
- 
+        $mienbac=mathang::where('region',"=",'bac')->first();
+        $mientrung=mathang::where('region',"=",'trung')->first();
+        $miennam=mathang::where('region',"=",'nam')->first();
 
-
-        return view('pages.page-users-dashboard',['topgiare'=>$topgiare,'topmua'=>$topluotmua,'toprate'=>$toprate,'datas'=>$datas]);
+        return view('pages.page-users-dashboard',['mienbac'=>$mienbac,'mientrung'=>$mientrung,'miennam'=>$miennam,'topgiare'=>$topgiare,'topmua'=>$topluotmua,'toprate'=>$toprate,'datas'=>$datas]);
     }
 }

@@ -1,5 +1,5 @@
 
-@extends('layouts.contentLayoutMaster')
+@extends('layouts.fullLayoutMaster')
 {{-- title --}}
 @section('title','Thông Tin Sản Phẩm')
 

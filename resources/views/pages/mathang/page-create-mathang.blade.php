@@ -1,5 +1,5 @@
 
-@extends('layouts.contentLayoutMaster')
+@extends('layouts.fullLayoutMaster')
 {{-- title --}}
 @section('title','Đăng sản phẩm')
 
@@ -66,6 +66,21 @@
                             <option value="Nhà vườn">Nhà vườn</option>
                             <option value="Biển">Biển</option>
                             <option value="Khác">Khác</option>
+
+
+                        </select>
+                        </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                        <fieldset class="form-group ">
+                        <label for="loai">Miền</label>
+
+                            <select id="region"  class="custom-select" name="region" style="overflow: hidden;" required="">
+                            <option selected="" disabled="" hidden=""></option>
+                            <option value="bac">Miền Bắc </option>
+                            <option value="trung">Miền Trung</option>
+                            <option value="nam">Miên Nam</option>
+                            
 
 
                         </select>

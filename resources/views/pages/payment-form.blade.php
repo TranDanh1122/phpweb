@@ -1,4 +1,4 @@
-@extends('layouts.contentLayoutMaster')
+@extends('layouts.fullLayoutMaster')
 {{-- title --}}
 @section('title','Payment Form')
 

@@ -62,6 +62,7 @@ class Mua_Ban_Controller extends Controller
         $mathang->diachi1=$datas['tinh_thanh'];
         $mathang->diachi2=$datas['huyen_thi'];
         $mathang->diachi3=$datas['diachi'];
+        $mathang->region=$datas['region'];
         $mathang->ngaybd=date("Y-m-d H:i:s", strtotime($datas['ngaybd']));
         $mathang->ngayhh=date("Y-m-d H:i:s", strtotime($datas['hansd']));
         $mathang->thongtin=$datas['thongtin'];
@@ -96,6 +97,7 @@ class Mua_Ban_Controller extends Controller
         $mathang->diachi1=$datas['tinh_thanh'];
         $mathang->diachi2=$datas['huyen_thi'];
         $mathang->diachi3=$datas['diachi'];
+        $mathang->region=$datas['region'];
         $mathang->ngaybd=date("Y-m-d H:i:s", strtotime($datas['ngaybd']));
         $mathang->ngayhh=date("Y-m-d H:i:s", strtotime($datas['hansd']));
         $mathang->thongtin=$datas['thongtin'];

@@ -15,7 +15,7 @@ Route::get('/','DashboardController@usersDash')->name('dash-user');
 Route::get('/dash','DashboardController@usersDash')->name('dash-user');
 Route::get('/login','AuthController@loginPage')->name('login');
 Route::get('/register','AuthController@registerpage')->name('register');
-Route::get('/logout','AuthController@logout')->name('register');
+Route::get('auth/logout','AuthController@logout')->name('register');
 Route::post('/dangky', 'AuthController@register')->name('saveuser');
 Route::post('/dangnhap', 'AuthController@login')->name('dangnhap');
 Route::get('/dangbai','Mua_Ban_Controller@loadcreatepage')->name('dangbaiban');

@@ -54,8 +54,8 @@ data-open="hover" data-menu="horizontal-menu" data-col="2-columns" data-framewor
 
 
   <div class="sidenav-overlay"></div>
-  <div class="drag-target"></div>
-
+  <div class="drag-target" ></div>
+  <div style="margin:50px"></div>
   <!-- BEGIN: Footer-->
   @include('panels.footer')
   <!-- END: Footer-->

@@ -24,6 +24,11 @@ class AuthController extends Controller
   * @param  [string] password_confirmation
   * @return [string] message
   */
+
+public function __construct()
+{
+    $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
+}
 //Login page
 public function loginPage(){
     $pageConfigs = ['bodyCustomClass'=> 'bg-success'];
