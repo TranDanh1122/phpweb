@@ -32,3 +32,6 @@ Route::get('/payment', 'Mua_Ban_Controller@loadpay');
 Route::get('/edit-profile', 'Mua_Ban_Controller@edituser');
 Route::post('/update-profile', 'Mua_Ban_Controller@userupdate');
 Route::post('/payment-reponse', 'Mua_Ban_Controller@savepay')->name('payment');
+Route::post('/fill-region', 'Mua_Ban_Controller@fillregion');
+Route::post('/fill-type', 'Mua_Ban_Controller@filltype');
+Route::post('/fill-search', 'Mua_Ban_Controller@search');

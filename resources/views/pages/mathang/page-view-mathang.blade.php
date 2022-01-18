@@ -154,12 +154,12 @@ li {
 $tongve= $data->soluong;
 $vedamua=$data->damua;
 $veconlai=$tongve-$vedamua;
-echo($veconlai);
+
 
 ?>
-<section id="validation">
+<section id="validation" class="m-1">
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-3">
 			<div class="container">
                 @if($data->loadanh)
                 <div class="gallery">
@@ -177,12 +177,13 @@ echo($veconlai);
                 @endif
             </div>
         </div>
-        <div class="col-md-6" 
-        style="border-width: 3px;border-style: solid;border-color: aqua;padding: 20px;width: 400px;height: 800px; "
+        <div class="col-md-5 col-sm-3" 
+        style="border-width: 3px;border-style: solid;border-color: aqua;padding: 20px;width: 300px;height: 550px; "
         >
         
         <p style="font-size: 25px;font-family:Times New Roman">{{$data->title}}</p>
         <p> <span>Rate: {{$data->rate}} <strong>*</strong></span> <em>|</em> 
+    
         <span>Đánh giá: 1 <small>lượt</small></span> <em>|</em>
         <span>Đã bán: <?php echo($vedamua); ?> <small>vé</small></span>  </p>
         <p style="font-size: 19px;">Giá vé: <b style="font-size: 30px;color:red;">{{$data->gia}} <sup style="color:red;">đ</sup></b></p>
@@ -193,10 +194,10 @@ echo($veconlai);
         <p style="font-size: 19px;">Địa chỉ: {{$data->diachi1}}-{{$data->diachi2}}-{{$data->diachi3}}</p>
         <p style="font-size: 19px;">Liên hệ: {{$data->lienhe}}</p>
         <p style="font-size: 19px;">Thông tin chi tiết: </p>
-        <div style="border-width: 2px;border-style: dashed;border-color: aqua;
-        padding: 15px;width: 600px;height: 300px; ">
+        <textarea readonly style="border-width: 2px;border-style: dashed;border-color: aqua;
+        padding: 15px;width: 600px;height: 100px; ">
         {{$data->thongtin}}
-        </div><br>
+        </textarea><br>
       <div class="buttons_added">
           <p style="font-size: 19px;"> Số lượng vé mua: 
       <input class="minus is-form" type="button" value="-">
@@ -204,10 +205,10 @@ echo($veconlai);
       <input class="plus is-form" type="button" value="+">
       <small> Số vé còn lại: <?php echo($veconlai); ?> vé</small>
            </p>
-      </div><br><br><br>
-        <div>
+      </div><br><br>
+        <div class=" d-flex justify-content-between">
         
-        <button type="button" class="btn btn-success">Mua ngay</button>
+        <a  class="btn btn-success">Mua ngay</a>
          </div>
         </div>
     </div>

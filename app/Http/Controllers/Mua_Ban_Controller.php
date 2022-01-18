@@ -231,4 +231,46 @@ class Mua_Ban_Controller extends Controller
         
 				
     }
+    public function fillregion(Request $request)
+    {
+       
+        $data=$request->all();
+        if(!empty($data["region"])){
+            $result=mathang::where("loai",$data["region"])->with("loadanh")->get();
+            return response()->json([
+                'error'=>false,
+                'response'=>$result,
+                
+            ]);
+
+        }else{
+            return response()->json([
+                'error'=>true
+            ]);
+        }
+
+        
+				
+    }
+    public function search(Request $request)
+    {
+       
+        $data=$request->all();
+        if(!empty($data["searchval"])){
+            $result=mathang::where("title","like","%".$data["searchval"]."%")->with("loadanh")->get();
+            return response()->json([
+                'error'=>false,
+                'response'=>$result,
+                
+            ]);
+
+        }else{
+            return response()->json([
+                'error'=>true
+            ]);
+        }
+
+        
+				
+    }
 }

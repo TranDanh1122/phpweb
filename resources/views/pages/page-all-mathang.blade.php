@@ -48,7 +48,7 @@ a:active {
 
        
             
-<div class=row>
+<div class="row m-1">
     <div class="col-md-3 mr-1 bg-white">
     <h1>Bộ lọc</h1>
     <div class="form-group ">
@@ -63,28 +63,14 @@ a:active {
 
        </select>
      </div>
+    
      <div class="form-group ">
         <div class="d-flex justify-content-start">
-        <h5>Loại</h5>
+        <h5>Seach</h5>
       </div>
-                         <select id="loai"  class="custom-select" name="loai" style="overflow: hidden;" required="">
-                            <option selected="" disabled="" hidden=""></option>
-                            <option value="bac">Resort </option>
-                            <option value="trung">Nhà vườn</option>
-                            <option value="nam">Biển</option>
-                            <option value="nam">KHác</option>
-       </select>
-     </div>
-     <div class="form-group ">
-        <div class="d-flex justify-content-start">
-        <h5>Giá</h5>
-      </div>
-        <select class="custom-select"  style="overflow: hidden;" required="">
-        <option selected="" disabled="" hidden=""></option>
-        <option value="inc">Tăng dần</option>
-        <option value="desc">Giảm dần</option>
-
-       </select>
+       
+      <input name="search" id="search" class="form-control"/>
+     <button href="javascript:void(0)" id="btn-search" class="btn btn-primary mt-1">Search</button>
      </div>
     </div>
 
@@ -93,7 +79,7 @@ a:active {
 
             <table class="table table-bordered">
 
-              <tbody>
+              <tbody id="tablebody">
                 @foreach($data as $key=>$value)
                <tr class="mb-1">
                    <td><a href="{{url('sanpham/'.$value->id)}}"><img  alt="postimage" style="  max-width: 250px;max-height: 300px;"
@@ -131,9 +117,14 @@ a:active {
                       
                     </td>
                     <td>
+                     
+                   
                       <div class="d-flex justify-content-between">
+                        @if($value->ngdang->id==(Auth::user()?Auth::user()->id:''))
                           <a class="btn btn-outline-primary"
+
                                   href="{{url('suabai/'.$value->id)}}">Edit</a>
+                        @endif
                           <a class="btn btn-outline-danger"
                                   href="{{url('sanpham/'.$value->id)}}">View</a>
                                   <div>
@@ -164,10 +155,175 @@ a:active {
 @endsection
 {{-- vendor scripts --}}
 @section('vendor-scripts')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 @endsection
 {{-- page scripts --}}
-@section('page-scripts')
 
+@section('page-scripts')
+<script>
+  var auth="{{Auth::user()?Auth::user()->id:''}}";
+  var token="{{csrf_token()}}"
+</script>
+<script>
+  
+  $(document).ready(function(){
+  
+    $('#region').change(function(){
+      $.ajax({
+        url:"{{url('fill-region')}}",
+        data:{
+          region: $(this).val(),
+          _token:token
+        },
+        type:"post",
+        success:function(response){
+            if(response.error){
+              alert("Error");
+            }else{
+           
+              var table=$(document.getElementById('tablebody'));
+							table.empty();
+              $.each(response.response,function(key,value){
+                edit="";
+                if(value.ngdang==auth){
+                        
+                      edit=  `<a class="btn btn-outline-primary"
+
+                                href="{{url('suabai/')}}/`+value.id+`">Edit</a>`;}
+              
+              html=`              <tr class="mb-1">
+                   <td><a href="{{url('sanpham/')}}/`+value.id+`"><img  alt="postimage" style="  max-width: 250px;max-height: 300px;"
+                   src="{{url('/mathanganh/')}}/`+value.loadanh[0].name+`"
+                   /></a></td>
+                   
+                   <td>
+                        <div  class="d-flex  flex-column">
+                           <a href="{{url('sanpham/')}}/`+value.id+`" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+value.title+`</a>
+               
+                           <p class="bg-transparent bg-gradient text-black-50">
+                             <small>
+                                            <a class="name" href="{{url('nguoidang/post')}}" target="_blank" >Người đăng:`+(value.ngdang?value.ngdang[0].Name:'')+`</a>
+                                            <em>|</em>
+                                            <a href="{{url('allpost?type=loai&value=')}}`+value.loai+`" target="_blank">Loại:`+value.loai+`</a>
+                                            <br>
+                                            <span id="rate">Rate:`+value.rate+`*</span>
+                                            <em>|</em>
+                                            <span id="vé" >Số vé đã mua: `+value.damua+`</span>
+                                            <em>|</em>
+                                            <span id="gia" >Giá:`+value.gia+`</span>
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>`+value.thongtin+`</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>`+moment(value.ngaybd).format("DD/MM/YYYY")+`</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>`+moment(value.ngayhh).format("DD/MM/YYYY")+`</span></small>
+                                        </p>
+
+                        </div>
+                           
+                      
+                    </td>
+                    <td>
+                     
+                   
+                      <div class="d-flex justify-content-between">`+
+                       
+                               edit+
+                          `<a class="btn btn-outline-danger"
+                                  href="{{url('sanpham/')}}/`+value.id+`">View</a>
+                                  <div>
+                       
+                    </td>
+                </tr>`;
+                table.html(html);
+            })
+          }
+          }
+        
+      })
+    })
+    $('#btn-search').click(function(){
+      $.ajax({
+        url:"{{url('fill-search')}}",
+        data:{
+          searchval: $('#search').val(),
+          _token:token
+        },
+        type:"post",
+        success:function(response){
+            if(response.error){
+              alert("Error");
+            }else{
+           
+              var table=$(document.getElementById('tablebody'));
+							table.empty();
+              $.each(response.response,function(key,value){
+                edit="";
+                if(value.ngdang==auth){
+                        
+                      edit=  `<a class="btn btn-outline-primary"
+
+                                href="{{url('suabai/')}}/`+value.id+`>Edit</a>`;}
+              
+              html=`              <tr class="mb-1">
+                   <td><a href="{{url('sanpham/')}}/`+value.id+`"><img  alt="postimage" style="  max-width: 250px;max-height: 300px;"
+                   src="{{url('/mathanganh/')}}/`+value.loadanh[0].name+`"
+                   /></a></td>
+                   
+                   <td>
+                        <div  class="d-flex  flex-column">
+                           <a href="{{url('sanpham/')}}/`+value.id+`" target="_blank" style="font-size: 20px;font-weight: bold !important;">`+value.title+`</a>
+               
+                           <p class="bg-transparent bg-gradient text-black-50">
+                             <small>
+                                            <a class="name" href="{{url('nguoidang/post')}}" target="_blank" >Người đăng:`+(value.ngdang?value.ngdang[0].Name:'')+`</a>
+                                            <em>|</em>
+                                            <a href="{{url('allpost?type=loai&value=')}}`+value.loai+`" target="_blank">Loại:`+value.loai+`</a>
+                                            <br>
+                                            <span id="rate">Rate:`+value.rate+`*</span>
+                                            <em>|</em>
+                                            <span id="vé" >Số vé đã mua: `+value.damua+`</span>
+                                            <em>|</em>
+                                            <span id="gia" >Giá:`+value.gia+`</span>
+                              </small>
+                                        </p>
+                                        <p class="intro"  style="font-size: 18px;">
+                                        <span>`+value.thongtin+`</span>
+
+                                        </p>
+                                        <p class="d-flex justify-content-around bg-transparent bg-gradient text-black-50"><small>Bắt đầu: <span>`+moment(value.ngaybd).format("DD/MM/YYYY")+`</span></small>
+                                        <br>
+                                        <small>Kết thúc: <span>`+moment(value.ngayhh).format("DD/MM/YYYY")+`</span></small>
+                                        </p>
+
+                        </div>
+                           
+                      
+                    </td>
+                    <td>
+                     
+                   
+                      <div class="d-flex justify-content-between">`+
+                       
+                               edit+
+                          `<a class="btn btn-outline-danger"
+                                  href="{{url('sanpham/')}}/`+value.id+`">View</a>
+                                  <div>
+                       
+                    </td>
+                </tr>`;
+                table.html(html);
+            })
+          }
+          }
+        
+      })
+    })
+
+  })
+</script>
 
 @endsection
