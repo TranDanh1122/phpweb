@@ -278,7 +278,7 @@
 							<div class="single-package-item">
 								<img src="{{asset('mathanganh/'.$item->loadanh->first()->name)}}" style="height:350px;width:500px" alt="package-place">
 								<div class="single-package-item-txt">
-									<h3> {{$item->title}} <span class="pull-right">${{$item->gia}} </span></h3>
+									<h3> {{$item->title}} <span class="pull-right">{{$item->gia}}<small>đ</small> </span></h3>
 									<div class="packages-para">
 										<p>
 											<span>

@@ -195,7 +195,7 @@ $veconlai=$tongve-$vedamua;
         <p style="font-size: 19px;">Liên hệ: {{$data->lienhe}}</p>
         <p style="font-size: 19px;">Thông tin chi tiết: </p>
         <textarea readonly style="border-width: 2px;border-style: dashed;border-color: aqua;
-        padding: 15px;width: 600px;height: 100px; ">
+        padding: 15px;width: 500px;height: 100px; ">
         {{$data->thongtin}}
         </textarea><br>
       <div class="buttons_added">
